@@ -1,0 +1,38 @@
+def get_input
+  gets.chomp
+end
+
+def guess_check (player_input, true_number)
+  if player_input > true_number
+    puts "Sorry, too high!"
+  elsif player_input < true_number
+    puts "Sorry, too low!"
+  else
+    puts "You guessed it: the number is #{true_number}."
+  end
+  player_input == true_number
+end
+
+puts "Welcome to the guessing game!"
+puts "Guess a number between 1 and 100. You only have five tries."
+true_number = rand(1...100)
+
+
+  guesses = []
+  attempts = 6
+while attempts > 0
+  attempts = attempts - 1
+  if attempts == 0
+    puts "Sorry, you are out of guesses. You lose. The number was #{true_number}."
+elsif guesses.last == true_number
+  puts "Great job!"
+  break
+  else
+    puts "Guess the number. You have #{attempts} tries left."
+
+    player_input = get_input.to_i
+    guesses.push(player_input)
+    guess_check(player_input,true_number)
+    puts "You've guessed #{guesses}."
+end
+  end
